@@ -60,10 +60,10 @@
       </div>
       <div *ngIf="!GST?.valid && (GST?.dirty || GST?.touched)" class="error">
         <div *ngIf="GST!.errors!.required" class="text text-danger">
-          Password is required
+          GST Number is required
         </div>
         <div *ngIf="GST!.errors!.pattern" class="text text-danger">
-            First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+             contain at least 8 or more characters
           </div>
           </div>
       <div class="mb-3">
@@ -72,10 +72,10 @@
       </div>
       <div *ngIf="!Aadhar?.valid && (Aadhar?.dirty || Aadhar?.touched)" class="error">
         <div *ngIf="Aadhar!.errors!.required" class="text text-danger">
-          Password is required
+          Aadhar Number is required
         </div>
         <div *ngIf="Aadhar!.errors!.pattern" class="text text-danger">
-            First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+             contain only numbers
           </div>
           </div>
         <div class="mb-3">
@@ -84,10 +84,10 @@
         </div>
         <div *ngIf="!Pan?.valid && (Pan?.dirty || Pan?.touched)" class="error">
           <div *ngIf="Pan!.errors!.required" class="text text-danger">
-            Password is required
+            PAN number is required
           </div>
           <div *ngIf="Pan!.errors!.pattern" class="text text-danger">
-              First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+             Contain at most 10 characters
             </div>
             </div>
             
@@ -98,7 +98,7 @@
           </div>
           <div *ngIf="!CompanyDetails?.valid && (CompanyDetails?.dirty || CompanyDetails?.touched)" class="error">
             <div *ngIf="CompanyDetails!.errors!.required" class="text text-danger">
-              Password is required
+              Company details are required
             </div>
          
               </div>

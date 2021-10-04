@@ -4,13 +4,16 @@ import { Admins } from "../models/admins.model";
 
 import { Observable } from 'rxjs';
 
-@Injectable(  {providedIn: 'root'})
+@Injectable(
+      {
+          providedIn: 'root'
+    })
+
 export class AdminService{
   url:string="http://localhost:35085/api/Admins";
   constructor(private client:HttpClient,private registerHttp:HttpClient)
-  {
+  {}
 
-  }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   }
@@ -36,19 +39,23 @@ export class AdminService{
       const httpheader={headers:new HttpHeaders({'Content-Type':'text/html'})};
       return this.client.put(this.url+"/RemoveRetailer?retailerid="+retailerid,JSON.stringify(retailerid),httpheader)
   }
+
   GetCategories()
   {
       return this.client.get(this.url+'/GetCategories')
   }
+
   GetPendingProducts()
   {
       return this.client.get(this.url+'/GetPendingProducts')
   }
+
   ApproveProduct(productid:any)
   {
       const httpheader={headers:new HttpHeaders({'Content-Type':'text/html'})};
       return this.client.put(this.url+"/ApproveProduct?productid="+productid,JSON.stringify(productid),httpheader)
   }
+
   RejectProduct(productid:any)
   {
       const httpheader={headers:new HttpHeaders({'Content-Type':'text/html'})};

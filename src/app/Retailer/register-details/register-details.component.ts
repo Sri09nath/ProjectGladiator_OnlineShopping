@@ -9,10 +9,12 @@ import { RetailerService } from 'src/app/Services/retailer.service';
   styleUrls: ['./register-details.component.css']
 })
 export class RegisterDetailsComponent implements OnInit {
+
   clicked:boolean=false;
   constructor(private RetailerService:RetailerService,private router:Router) { }
   submitted:boolean=false;
   status:any;
+
   ngOnInit(): void {
   }
   RegisterDetsform:FormGroup=new FormGroup({GST:new FormControl("",[Validators.required]),
@@ -26,10 +28,12 @@ export class RegisterDetailsComponent implements OnInit {
   retailerpassword: new FormControl("",[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")])
 
  });
+
  Approval(){
    alert("Request has been sent to admin,please check confirmation mail for your approval status");
    this.clicked=true;
  }
+
  get Pan()
   {
     return this.RegisterDetsform.get('Pan');
@@ -68,11 +72,11 @@ export class RegisterDetailsComponent implements OnInit {
  console.log(this.RegisterDetsform.value);
  this.RetailerService.RetailerRegister(this.RegisterDetsform.value).subscribe(data => {
    this.statusObj = data;
-   //let jdata = JSON.parse(data.toString());
+   
    console.log(this.statusObj);
    if(this.statusObj.status == "successful") {
      alert("Registered successfully...");
-     this.router.navigateByUrl(" ");
+     this.router.navigateByUrl("");
    }
    else {
      this.status = "Retailer Already Exist";

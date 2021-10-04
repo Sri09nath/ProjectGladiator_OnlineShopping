@@ -58,7 +58,7 @@ export class NavBarComponent implements OnInit {
   
   LoginForm : FormGroup =new FormGroup({
     useremail: new FormControl("",[Validators.required,Validators.pattern("(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")]),
-    userpassword: new FormControl("")
+    userpassword: new FormControl("",[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")])
   });
 
   get useremail()
@@ -122,6 +122,7 @@ export class NavBarComponent implements OnInit {
           sessionStorage.setItem('admin', this.AdminLoginForm.controls.email.value);
           sessionStorage.setItem('reload',"done");
          // this.router.navigate(['Admin']);
+         
          this.router.navigateByUrl("/Admin1");
          
         }
@@ -135,7 +136,7 @@ export class NavBarComponent implements OnInit {
 
 RetailerLoginForm : FormGroup =new FormGroup({
   retaileremail: new FormControl("",[Validators.required,Validators.pattern("(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")]),
-  retailerpassword: new FormControl("")
+  retailerpassword: new FormControl("",[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")])
 });
 
 get retaileremail()
