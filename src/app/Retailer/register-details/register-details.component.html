@@ -1,0 +1,112 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<div style="width:50%; margin-left: 400px;">  
+    <form class="container border border-primary rounded p-4 " [formGroup]="RegisterDetsform" (ngSubmit)="Submitregister()" novalidate >
+      <h1>Register</h1>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text"   formControlName="retailername" class="form-control" id="exampleInputName" aria-describedby="emailHelp">
+      </div>
+      <div *ngIf="!retailername?.valid && (retailername?.dirty || retailername?.touched)" class="error">
+        <div *ngIf="retailername!.errors!.required">
+          <p style="color:red;">Full Name is required</p>
+        </div>
+        <div *ngIf="retailername!.errors!.pattern">
+          <p style="color: red;">Enter Name in correct format</p>
+        </div>
+     </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" formControlName="retaileremail"  id="exampleInputEmail" aria-describedby="emailHelp">
+      </div>
+      <div *ngIf="!retaileremail?.valid && (retaileremail?.dirty || retaileremail?.touched)" class="error">
+        <div *ngIf="retaileremail!.errors!.required">
+          <p style="color: red;">Email is required</p>
+        </div>
+        <div *ngIf="retaileremail!.errors!.pattern">
+          <p style="color: red;">Enter the correct email</p>
+        </div>
+      </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+          <input type="tel" formControlName="MobNo"  class="form-control" id="exampleInputMobile" aria-describedby="emailHelp">
+        </div>
+        <div *ngIf="!MobNo?.valid && (MobNo?.dirty || MobNo?.touched)" class="error">
+          <div *ngIf="MobNo!.errors!.required">
+            <p style="color: red;">mobile number is required</p>
+          </div>
+          <div *ngIf="MobNo!.errors!.pattern">
+            <p style="color: red;">Enter correct mobile number</p>
+          </div>
+        </div>
+       
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password"  formControlName="retailerpassword" class="form-control" id="exampleInputPassword1">
+          </div>
+          
+          <div *ngIf="!retailerpassword?.valid && (retailerpassword?.dirty || retailerpassword?.touched)" class="error">
+            <div *ngIf="retailerpassword!.errors!.required" class="text text-danger">
+              Password is required
+            </div>
+            <div *ngIf="retailerpassword!.errors!.pattern" class="text text-danger">
+                First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+              </div>
+        
+       </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">GST Number</label>
+        <input type="text" class="form-control" formControlName="GST" id="exampleInputGST" aria-describedby="emailHelp">
+      </div>
+      <div *ngIf="!GST?.valid && (GST?.dirty || GST?.touched)" class="error">
+        <div *ngIf="GST!.errors!.required" class="text text-danger">
+          Password is required
+        </div>
+        <div *ngIf="GST!.errors!.pattern" class="text text-danger">
+            First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+          </div>
+          </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Aadhar Number</label>
+        <input type="text" class="form-control" formControlName="Aadhar" id="exampleInputAadhar" aria-describedby="emailHelp">
+      </div>
+      <div *ngIf="!Aadhar?.valid && (Aadhar?.dirty || Aadhar?.touched)" class="error">
+        <div *ngIf="Aadhar!.errors!.required" class="text text-danger">
+          Password is required
+        </div>
+        <div *ngIf="Aadhar!.errors!.pattern" class="text text-danger">
+            First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+          </div>
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Pan</label>
+          <input type="text" class="form-control" formControlName="Pan" id="exampleInputPAN" aria-describedby="emailHelp">
+        </div>
+        <div *ngIf="!Pan?.valid && (Pan?.dirty || Pan?.touched)" class="error">
+          <div *ngIf="Pan!.errors!.required" class="text text-danger">
+            Password is required
+          </div>
+          <div *ngIf="Pan!.errors!.pattern" class="text text-danger">
+              First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+            </div>
+            </div>
+            
+        
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Company Details</label>
+            <input type="text" class="form-control" formControlName="CompanyDetails" id="exampleInputCD" aria-describedby="emailHelp">
+          </div>
+          <div *ngIf="!CompanyDetails?.valid && (CompanyDetails?.dirty || CompanyDetails?.touched)" class="error">
+            <div *ngIf="CompanyDetails!.errors!.required" class="text text-danger">
+              Password is required
+            </div>
+         
+              </div>
+      
+      
+        <input type="submit"  value="Request For Approval" (click)="Approval()" >
+
+       
+    </form>
+  </div> 
+ 

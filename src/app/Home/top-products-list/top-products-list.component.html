@@ -1,0 +1,5 @@
+<div class="row">
+    <div *ngFor="let product of Products | slice : 0:8" class = "shadow-lg col-sm-3 p-3">
+        <app-top-products [product]="product"></app-top-products>
+    </div>
+</div>

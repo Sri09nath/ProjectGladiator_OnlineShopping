@@ -1,0 +1,145 @@
+<app-nav-bar></app-nav-bar>
+<br>
+<div class=" container nav-item">
+    <div class="input-group Search">
+    <input class="form-control" type="search" [(ngModel)]="search" style="font-family: Arial, Helvetica, sans-serif;"placeholder="Search for products, brands and more" aria-label="Search"> 
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="FetchSearchResults()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <div class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" (click)="GetCategory()" data-toggle="dropdown" >
+                Categories
+              </button>
+              <div class="dropdown-menu " aria-labelledby="dropdownMenuButton" >
+                <div class="row">
+                    <div class="col" *ngFor = "let ct of categories">
+                      <a class="dropdown-item" (click)="ByCategory(ct.categoryname)" >{{ct.categoryname}}</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col">
+      <div class="nav-item">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" (click)="GetBrands()" data-toggle="dropdown" >
+              Filter By Brands
+            </button>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+              <div class="row">
+                  <div class="col" *ngFor="let b of brands">
+                    <a  class="dropdown-item" (click)="ByBrands(b.productbrand)" >{{b.productbrand}}</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col">
+      <div class="nav-item">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >
+              Filter By Price
+            </button>
+              <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                <div class="row">
+                  <div class="col">
+                    <a  class="dropdown-item" (click)="ByPrice('0-5000')" > 0-5000 </a>
+                  </div>
+                  <div class="col"> 
+                    <a  class="dropdown-item" (click)="ByPrice('5000-10000')" > 5000-10000 </a>
+                  </div>
+                  <div class="col">  
+                    <a  class="dropdown-item" (click)="ByPrice('10000-50000')" > 10000-50000 </a>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="nav-item">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >
+              Sort
+            </button>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+              <div class="row">
+                <a  class="dropdown-item" (click)="SortByAtoZ()">By A-Z/a-z</a>
+                <a  class="dropdown-item" (click)="SortByZtoA()">By Z-A/z-a</a>
+                <a  class="dropdown-item" (click)="SortByPriceHL()">By Price:High to Low</a>
+                <a  class="dropdown-item" (click)="SortByPriceLH()">By Price:Low to High</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container" *ngIf="searchstatus==false && filterbycategorystatus==false && filterbycategoryandbrandstatus==false && filterbypricecategorybrandstatus==false && sortstatus==false">
+    <div class="row">
+        <div *ngFor="let product of Products" class = "shadow-lg col-sm-3 p-3">
+            <app-top-products [product]="product"></app-top-products>
+        </div>
+    </div>    
+</div>
+<br>
+
+
+<div class="container" *ngIf="searchstatus==true">
+    <div class="row">
+        <div *ngFor="let s of searchdetails" class = "shadow-lg col-sm-3 p-3">
+            <app-top-products [product]="s"></app-top-products>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="filterbycategorystatus==true">
+    <div class="row">
+        <div *ngFor="let fc of filterbycategory" class = "shadow-lg col-sm-3 p-3">
+            <app-top-products [product]="fc"></app-top-products>
+        </div>
+    </div>    
+</div>
+
+<div class="container" *ngIf="filterbycategoryandbrandstatus==true">
+  <div class="row">
+      <div *ngFor="let fcb of filterbycategoryandbrand" class = "shadow-lg col-sm-3 p-3">
+          <app-top-products [product]="fcb"></app-top-products>
+      </div>
+  </div>    
+</div>
+
+<div class="container" *ngIf="filterbypricecategorybrandstatus==true">
+  <div class="row">
+      <div *ngFor="let fpcb of filterbypricecategorybrand" class = "shadow-lg col-sm-3 p-3">
+          <app-top-products [product]="fpcb"></app-top-products>
+      </div>
+  </div>    
+</div>
+
+<div class="container" *ngIf="sortstatus==true">
+  <div class="row">
+      <div *ngFor="let sort of sortbyatoz" class = "shadow-lg col-sm-3 p-3">
+          <app-top-products [product]="sort"></app-top-products>
+      </div>
+  </div>    
+</div>
+
+
+
+
+

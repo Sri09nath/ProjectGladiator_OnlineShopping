@@ -1,0 +1,111 @@
+<!--User Header-->
+<nav class="navbar navbar-expand-lg  fixed-top bg-primary">
+    <div class="container-fluid">
+        <button type="button" class="btn btn-primary"  ><b>Profile</b></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0   " >
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary" routerLink="/ProductDetails" ><b>Product Details</b></button>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <div class="nav-item text-white"><b>Welcome ,{{name}}</b></div>
+       </form>
+    
+          <form class="d-flex">
+            <!-- Button trigger modal -->
+           <button type="button" class="btn btn-primary" routerLink="/Forgot Password">
+             <b>Change Password</b>
+           </button>
+         </form>
+      
+        <form class="d-flex">
+          
+         <button type="button" class="btn btn-primary" (click)="LogOff()" routerLink="" >
+           <b>Logout</b>
+         </button>
+       </form>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+
+
+  <div class="container mt-5" style="background-color:rgb(137, 209, 199)">
+    <div class="main-body ">
+      <div class="col-md-8 ">
+        <div class="card m-5">
+          <div class="card-body" *ngFor="let retailer of RetailerDetails">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{retailer.retailername}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{name}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Mobile Number</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{retailer.mobNo}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Aadhar Number</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{retailer.aadhar}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">GST Number</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{retailer.gst}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">PAN ID</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{retailer.pan}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Company</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{retailer.companyDetails}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 

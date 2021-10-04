@@ -1,0 +1,65 @@
+<div class="centering">  
+  
+    <form class="container border border-primary rounded p-4" [formGroup]="RetailerRegisterform"  novalidate >
+      
+      <h1>Register</h1>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text"   formControlName="retailername" class="form-control" id="exampleInputName" aria-describedby="emailHelp">
+      </div>
+      <div *ngIf="!retailername?.valid && (retailername?.dirty || retailername?.touched)" class="error">
+        <div *ngIf="retailername!.errors!.required">
+          <p style="color:red;">Full Name is required</p>
+        </div>
+        <div *ngIf="retailername!.errors!.pattern">
+          <p style="color: red;">Enter Name in correct format</p>
+        </div>
+     </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" formControlName="retaileremail"  id="exampleInputEmail" aria-describedby="emailHelp">
+      </div>
+      <div *ngIf="!retaileremail?.valid && (retaileremail?.dirty || retaileremail?.touched)" class="error">
+        <div *ngIf="retaileremail!.errors!.required">
+          <p style="color: red;">Email is required</p>
+        </div>
+        <div *ngIf="retaileremail!.errors!.pattern">
+          <p style="color: red;">Enter the correct email</p>
+        </div>
+      </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+          <input type="tel" formControlName="retailermobile"  class="form-control" id="exampleInputMobile" aria-describedby="emailHelp">
+        </div>
+        <div *ngIf="!retailermobile?.valid && (retailermobile?.dirty || retailermobile?.touched)" class="error">
+          <div *ngIf="retailermobile!.errors!.required">
+            <p style="color: red;">mobile number is required</p>
+          </div>
+          <div *ngIf="retailermobile!.errors!.pattern">
+            <p style="color: red;">Enter correct mobile number</p>
+          </div>
+        </div>
+       
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password"  formControlName="retailerpassword" class="form-control" id="exampleInputPassword1">
+          </div>
+          
+          <div *ngIf="!retailerpassword?.valid && (retailerpassword?.dirty || retailerpassword?.touched)" class="error">
+            <div *ngIf="retailerpassword!.errors!.required" class="text text-danger">
+              Password is required
+            </div>
+            <div *ngIf="retailerpassword!.errors!.pattern" class="text text-danger">
+                First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+              </div>
+        
+       </div>
+      
+      
+        <input type="submit" routerLink="/RegisterDetails" value="Submit">
+            </form>
+  </div>
+ 
+
+  
+ 

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg  fixed-top bg-primary">
+    <div class="container-fluid">
+        <button type="button" class="btn btn-primary"  ><b>Profile</b></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0   " >
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary"  ><b>My Orders</b></button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary" routerLink="/WishList" ><b>My WishList</b></button>
+          </li>
+        </ul>
+
+        <form class="d-flex">
+          <div class="nav-item text-white">
+            <b>Hello,{{usermail}}</b>
+         </div>
+        </form>
+          
+        
+        <form class="d-flex">
+         <button type="button" class="btn btn-primary" routerLink="" >
+           <b>Logout</b>
+         </button>
+       </form>
+
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+
+<div class="container mt-5">
+    
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-page-inner">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Order Date</th>
+                                    <th>Product Name</th>
+                                    <th>Order quantity</th>
+                                    <th>Order Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle" *ngFor="let order of orders">
+                                <tr>
+                                    <td>{{order.orderid}}</td>                                     
+                                    <td>{{order.orderdate}}</td>
+                                    <td>{{order.productname}}</td>
+                                    <td>{{order.orderquantity}}</td>
+                                    <td>{{order.orderprice}}</td>
+                                </tr>                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+   
+</div>
+

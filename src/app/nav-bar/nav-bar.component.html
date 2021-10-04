@@ -1,0 +1,227 @@
+
+<nav class="navbar navbar-expand-lg  fixed-top bg-primary">
+    <div class="container-fluid">
+      <a class="nav-link active  " href="#" style="color:white"><b>Home</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0   " >
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/AllProducts" style="color:white"><b>Products</b></a>
+          </li>
+          
+        </ul>
+        <form class="d-flex">
+          <!-- Button trigger modal -->
+          <div class="input-group">
+            <div class="input-group-append">
+              <button routerLink="/Cart" class="btn btn-primary" type="button">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+            </div>
+          <div class="dropdown" >
+            <button *ngIf="userlogged==false" class="btn btn-primary dropdown-toggle" type="button"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Login/ Sign Up
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li class="dropdown-item"  data-toggle="modal" data-target="#exampleModalScrollable1" >User</li>
+              <li class="dropdown-item"  data-toggle="modal" data-target="#exampleModalScrollable2">Retailer</li>
+              <li class="dropdown-item"  data-toggle="modal" data-target="#exampleModalScrollable3">Admin</li>
+            </div>
+          </div>
+         <p *ngIf="adminlogged==true" routerLink="/Admin1" > {{name}}</p>
+
+         <div class="dropdown" >
+          <button *ngIf="userlogged==true" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{user}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li class="dropdown-item" ><a (click)="onLogout()" routerLink="">Log Out</a></li>
+            <li class="dropdown-item"  ><a routerLink="/UserProfile">User Profile</a></li>
+          </div>
+        </div>
+
+         
+           
+   
+       </form>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+
+  <!-- Modal -->
+  <!--User Login-->
+<div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="container " [formGroup]="LoginForm" (ngSubmit)="submituserdata()">
+          
+           <h1 style="text-align: center;">Login</h1>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email </label>
+              <input type="email" class="form-control" formControlName="useremail" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            </div>
+            <div *ngIf="!useremail?.valid && (useremail?.dirty || useremail?.touched)" class="error">
+              <div *ngIf="useremail!.errors!.required" class="text text-danger">
+                Email Id is required
+              </div>
+              
+                <div *ngIf="useremail!.errors!.pattern" class="text text-danger">
+                      Enter valid email Address                    
+                </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password"  formControlName="userpassword" class="form-control" id="exampleInputPassword1">
+            </div>
+            </div>
+            <div *ngIf="!userpassword?.valid && (userpassword?.dirty || userpassword?.touched)" class="error">
+              <div *ngIf="userpassword!.errors!.required" class="text text-danger">
+                Password is required
+              </div>
+              <div *ngIf="userpassword!.errors!.pattern" class="text text-danger">
+                  First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+                </div>
+          
+          </div>
+            <div class="pass" routerLink="Forgot Password" data-dismiss="modal" >Forgot Password?</div>
+            <input type="submit" value="Login"  [disabled]="!LoginForm.valid"/>
+            
+            <div class="register">
+              New User? <a routerLink="UserRegister" data-dismiss="modal" >Register</a>
+            </div>
+            <div class="retailer" >
+              Buying for Work? <a routerLink="/Register" data-dismiss="modal" >Register for Business account</a>
+            </div>
+        </form>
+    
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--Admin Login-->
+<div class="modal fade" id="exampleModalScrollable3" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="container " [formGroup]="AdminLoginForm" (ngSubmit)="submitadmindata()">
+          
+           <h1 style="text-align: center;">Admin Login</h1>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email </label>
+              <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            </div>
+            <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+              <div *ngIf="email!.errors!.required" class="text text-danger">
+                Email Id is required
+              </div>
+              
+                <div *ngIf="email!.errors!.pattern" class="text text-danger">
+                      Enter valid email Address                    
+                </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password"  formControlName="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            </div>
+            <div *ngIf="!password?.valid && (password?.dirty || password?.touched)" class="error">
+              <div *ngIf="password!.errors!.required" class="text text-danger">
+                Password is required
+              </div>
+              <div *ngIf="password!.errors!.pattern" class="text text-danger">
+                  First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+                </div>
+          
+          </div>
+            <div class="pass" routerLink="Forgot Password" data-dismiss="modal" >Forgot Password?</div>
+            <input type="submit" value="Login" [disabled]="!AdminLoginForm.valid"/>
+            
+           
+        </form>
+    
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--Retailer Login-->
+
+<div class="modal fade" id="exampleModalScrollable2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="container " [formGroup]="RetailerLoginForm" (ngSubmit)="submitretailerdata()">
+          
+           <h1 style="text-align: center;">Retailer Login</h1>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email </label>
+              <input type="email" class="form-control" formControlName="retaileremail" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            </div>
+            <div *ngIf="!retaileremail?.valid && (email?.dirty || retaileremail?.touched)" class="error">
+              <div *ngIf="retaileremail!.errors!.required" class="text text-danger">
+                Email Id is required
+              </div>
+              
+                <div *ngIf="retaileremail!.errors!.pattern" class="text text-danger">
+                      Enter valid email Address                    
+                </div>
+          </div>
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password"  formControlName="retailerpassword" class="form-control" id="exampleInputPassword1">
+            </div>
+            </div>
+            <div *ngIf="!retailerpassword?.valid && (retailerpassword?.dirty || retailerpassword?.touched)" class="error">
+              <div *ngIf="retailerpassword!.errors!.required" class="text text-danger">
+                Password is required
+              </div>
+              <div *ngIf="retailerpassword!.errors!.pattern" class="text text-danger">
+                  First letter must be uppercase and contain at least one number and one uppercase, lowercase letter and special character, and at least 8 or more characters
+                </div>
+          
+          </div>
+            <div class="pass" routerLink="Forgot Password" data-dismiss="modal" >Forgot Password?</div>
+            <input type="submit" value="Login"  [disabled]="!RetailerLoginForm.valid"/>
+            <div class="retailer" >
+              Buying for Work? <a routerLink="/RegisterDetails" data-dismiss="modal" >Register for Business account</a>
+            </div>
+           
+        </form>
+    
+      </div>
+      
+    </div>
+  </div>
+</div> 
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  

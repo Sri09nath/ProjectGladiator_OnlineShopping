@@ -1,0 +1,156 @@
+<app-nav-bar></app-nav-bar>
+<!--<nav class="navbar navbar-expand-lg  fixed-top bg-primary">
+  <div class="container-fluid">
+    <a class="nav-link active  " href="#" style="color:white"><b>Home</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0   ">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="color:white"><b>Products</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="color:white"><b>Compare</b></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false" style="color:white">
+            <b>Categories</b>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown ">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <div class="input-group Search">
+            <input class="form-control" type="search" style="font-family: Arial, Helvetica, sans-serif;"
+              placeholder="Search for products, brands and more" aria-label="Search">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="input-group">
+            <a class="nav-link active" style="color:white; margin-left: 10px" href="#"><b>Cart</b></a>
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <form class="d-flex">
+
+        <button type="button" class="btn btn-primary">
+          <b>username</b>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>-->
+<br>
+<br>
+
+<!--Product Description-->
+<!-- Modal: modalQuickView -->
+<div class="container" *ngFor="let product of Products">
+  <div class="row" *ngIf="id==product.productid">
+    <div class="col-lg-5">
+      <!--Carousel Wrapper-->
+      <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails " data-ride="carousel">
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active card">
+            <img class="d-block w-100  "
+              src="{{product.productimage1}}" alt="First slide">
+          </div>
+        </div>
+        <!--/.Slides-->        
+      </div>
+      <!--/.Carousel Wrapper-->
+    </div>
+
+    <div class="col-lg-7">
+      <div>
+        <h2 class=" h2-responsive product-name">
+        <strong>Product Name:{{product.productname}}</strong>
+        </h2>
+        <h4 class="h4-responsive">
+          <span class="green-text">
+            <strong>PRICE : {{product.productprice}}</strong>
+          </span>
+        </h4>
+
+        <!--Accordion wrapper-->
+        <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+          <!-- Accordion card -->
+          <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingOne1">
+              <h5 class="mb-0">
+                PRODUCT CATEGORY
+              </h5>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body" style="height: 100px;">
+              {{product.categoryname}}
+            </div>
+          </div>
+
+          <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingOne1">
+              <h5 class="mb-0">
+                PRODUCT DESCRIPTION 
+              </h5>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body" style="height: 100px;">
+              {{product.productdescription}}
+            </div>
+          </div>
+          <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingOne1">
+              <h5 class="mb-0">
+                SELLER DETAILS
+              </h5>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body" style="height: 100px;">
+              {{product.retailername}} 
+              contact details: {{product.retaileremail}} 
+            </div>
+          </div>
+          <!-- Add to Cart -->
+          <div class="card-body">
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary" (click)="addToCart()">Add to cart
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <!-- /.Add to Cart -->
+        </div>
+      </div>
+    </div>
+  

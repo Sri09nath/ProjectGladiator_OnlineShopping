@@ -1,0 +1,30 @@
+<div class="centering">  
+    <a class="nav-link " href="#">Online Shopping</a>
+    <form class="container border border-primary rounded p-3" [formGroup]="Registerform" (ngSubmit)="Submitregister()" novalidate>
+      <h1>Forgot Password</h1>
+      
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="Email">
+        </div>
+        <div *ngIf="!Email?.valid && (Email?.dirty || Email?.touched)" class="error">
+          <div *ngIf="Email!.errors!.required">
+            <p style="color: red;">Email is required</p>
+          </div>
+          <div *ngIf="Email!.errors!.pattern">
+            <p style="color: red;">Enter the correct email</p>
+          </div>
+        </div>
+
+        
+        <input type="submit" value="Submit" routerLink="/UserOTP">
+
+        <div class="login">
+          <a data-toggle="modal" data-target="#exampleModalScrollable" routerLink="">Back</a>
+        </div>
+    </form>
+  </div>
+  
+  <footer class="footer bg-primary">
+    Footer
+  </footer>

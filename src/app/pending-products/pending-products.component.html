@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg  fixed-top bg-primary">
+    <div class="container-fluid">
+        <button type="button" class="btn btn-primary" routerLink="/Admin1" ><b>Retailer Details</b></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0   " >
+          <li class="nav-item">
+            <button type="button" class="btn btn-primary"   ><b>Products</b></button>
+          </li>
+         
+        </ul>
+        <form class="d-flex">
+          <div class="nav-item text-white"><b>Welcome ,{{name}}</b></div>
+       </form>
+          <form class="d-flex">
+            <!-- Button trigger modal -->
+           <button type="button" class="btn btn-primary" routerLink="/Forgot Password">
+             <b>Change Password</b>
+           </button>
+         </form>
+        
+        <form class="d-flex">
+        
+         <button type="button" class="btn btn-primary" (click)="LogOff()" routerLink="" >
+           <b>Logout</b>
+         </button>
+       </form>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+  <h1 style="text-align: center;">Product Details</h1>
+<div class="container" >
+   <div class="card" style="width: 100%;">
+       <div class="card-body">
+         <table class="table table-striped" style="background-color: rgb(217, 235, 233);">
+           
+             <thead>
+               <tr>
+                 <th scope="col">ProductID</th>
+                 <th scope="col">Product Name</th>
+                 <th scope="col"> Image</th>
+                 <th scope="col"> Price</th>
+                 <th scope="col">Category</th>
+                 <th scope="col"> Brand</th>
+                 <th scope="col"> Quantity</th>
+                 <th scope="col"> Status</th>
+                 <th scope="col"> Notification</th>
+                 <th scope="col">Retailer ID</th>
+                 <th scope="col">Retailer Name</th>
+                 <th scope="col">Actions</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr  *ngFor = "let product of ProductList">
+               
+                 <td>{{product.productid}}</td>
+                 <td>{{product.productname}}</td>
+                 <td><img src="{{product.productimage1}}" style="height: 100px; width: 100px;"></td>
+                 <td>{{product.productprice}}</td>
+                 <td>{{product.categoryname}}</td>
+                 <td>{{product.productbrand}}</td>
+                 <td>{{product.productquantity}}</td>
+                 <td>{{product.productstatus}}</td>
+                 <td>{{product.productnotification}}</td>
+                 <td>{{product.retailerid}}</td>
+                 <td>{{product.retailername}}</td>
+                 <td><button class="btn btn-success m-1" (click)="ApproveProduct(product.productid)" >Approve</button><button class="btn btn-danger"  (click)="RejectProduct(product.productid)">Delete</button></td>
+               </tr>
+               
+             
+             </tbody>
+           </table>
+       </div>
+
+   </div>
+</div>
+

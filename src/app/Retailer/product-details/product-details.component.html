@@ -1,0 +1,227 @@
+<!-- Button trigger modal -->
+<!--User Header-->
+<nav class="navbar navbar-expand-lg  fixed-top bg-primary">
+  <div class="container-fluid">
+      <button type="button" class="btn btn-primary"  routerLink="/Login"><b>Profile</b></button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0   " >
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary" routerLink="/ProductDetails" ><b>Product Details</b></button>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <div class="nav-item text-white"><b>Welcome ,{{name}}</b></div>
+     </form>
+        <form class="d-flex">
+          <!-- Button trigger modal -->
+         <button type="button" class="btn btn-primary" routerLink="/Forgot Password">
+           <b>Change Password</b>
+         </button>
+       </form>
+    
+      <form class="d-flex">
+        
+       <button type="button" class="btn btn-primary" (click)="LogOff()" routerLink="" >
+         <b>Logout</b>
+       </button>
+     </form>
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+
+
+
+<div class="bcg">
+  <br><br>
+  <h4 style="text-align: center;">Please Refer This Table For Category ID</h4>
+  <br>
+  <table class="table table-striped"  style="background-color: rgb(217, 235, 233);margin-left: 26%;width:50%">
+      <thead class="thead-dark">
+          <th style="text-align: center;">Category ID</th>
+          <th style="text-align: center;">Category Name</th>
+         <br>
+      </thead>
+      <tbody>
+          <tr *ngFor = "let category of categoryList">
+              <td style="text-align: center;">{{category.categoryid}}</td>
+              <td style="text-align: center;">{{category.categoryname}}</td>
+           
+          </tr>
+      </tbody>
+  </table>
+   <br/><br/><br/>
+   
+   <!-- Modal -->
+  
+   <div class="modal fade" id="AddRetailer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-scrollable" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalCenterTitle">Add Product</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+             <form  [formGroup]="Register1form"  (ngSubmit)="OnSubmit()">
+                 <div class="mb-3">
+                     <label  class="form-label"> Product Name</label>
+                     <input type="text" class="form-control" formControlName="productname"    id="RetailerId">
+                  </div>
+                 
+                  <div class="mb-3">
+                     <label  class="form-label"> Product Price</label>
+                     <input type="number" class="form-control" formControlName="productprice" id="RetailerName">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label  class="form-label"> Categoryid</label>
+                    <input type="number" class="form-control" formControlName="categoryid" id="MobileNumber1">
+                 </div>
+                 
+                  <div class="mb-3">
+                    <label  class="form-label"> Product Brand</label>
+                    <input type="text" class="form-control" formControlName="productbrand" id="MobileNumber2">
+                 </div>
+                 
+                 <div class="mb-3">
+                 <label  class="form-label"> Product Description</label>
+                  
+                    <input type="text" class="form-control" formControlName="productdescription" id="productdescription">
+                  </div>
+                 
+              
+             
+             
+             <div class="mb-3">
+                <label  class="form-label"> Product Quantity</label>
+                <input type="number" class="form-control" formControlName="productquantity" id="MobileNumber3">
+             </div>
+              
+           
+             <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+      
+                                              
+             </form>
+         </div>
+       
+       </div>
+     </div>
+   </div>
+
+ 
+ <!--table-->
+ <h3 style="text-align: center;"> Product Details</h3>
+   <div class="container">
+       <div class="card">
+           <div class="card-body">
+             <table class="table table-striped" style="background-color: rgb(217, 235, 233);">
+                 <thead>
+                   <tr>
+                    <th scope="col"> Product ID</th>
+                     <th scope="col"> Name</th>
+                     <th scope="col">Price</th>
+                     <th scope="col">Category</th>
+                     
+                     <th scope="col">Brand</th>
+                     <th scope="col">Description</th>
+                     <th scope="col">Image</th>
+                     <th scope="col">Quantity</th>
+                     <th scope="col">Notification</th>
+                     <th scope="col">Status</th>
+                     <th scope="col">Actions</th>
+                     
+                   </tr>
+                 </thead>
+                 <tbody>
+                  <tr  *ngFor = "let product of ProductList">
+                    <td>{{product.productid}}</td>
+                    <td>{{product.productname}}</td>
+                    <td>{{product.productprice}}</td>
+                    <td>{{product.categoryname}}</td>
+                    <td>{{product.productbrand}}</td>
+                    <td>{{product.productdescription}}</td>
+                    <td><img src="{{product.productimage1}}" alt="Image" style="width: 100px; height: 100px;"></td>
+                    <td>{{product.productquantity}}</td>
+                    <td>{{product.productnotification}}</td>
+                    <td>{{product.productstatus}}</td>
+                   
+                    <td><button class="btn btn-success m-1" data-toggle="modal" data-target="#AddRetailer1" [routerLink]="['/update',product.productid]">Edit</button>
+                      <button class="btn btn-danger" [routerLink]="['/update',product.productid]" (click)="RemoveProduct()">Delete</button>
+                     </td>
+                  </tr>
+                  
+                 </tbody>
+               </table>
+           </div>
+ 
+       </div>
+   </div>
+   
+  
+   <div class="button">
+    <button type="button" class="btn btn-success btn-lg"   data-toggle="modal" data-target="#AddRetailer">
+       Add  Product
+       </button>
+       </div>
+ <!-- Modal -->
+       <div class="modal fade" id="AddRetailer1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Edit Product</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form  [formGroup]="Register2form"  (ngSubmit)="Updateproduct()">
+                 
+                  
+                     <div class="mb-3">
+                        <label  class="form-label"> Product Price</label>
+                        <input type="number" class="form-control" formControlName="productprice" id="RetailerName">
+                     </div>
+                     
+                     
+                    
+                     <div class="mb-3">
+                       <label  class="form-label"> Product Brand</label>
+                       <input type="text" class="form-control" formControlName="productbrand" id="MobileNumber2">
+                    </div>
+                    
+                    <div class="mb-3">
+                    <label  class="form-label"> Product Description</label>
+                     
+                       <input type="text" class="form-control" formControlName="productdescription" id="productdescription">
+                     </div>
+                    
+                 
+                
+                
+                <div class="mb-3">
+                   <label  class="form-label"> Product Quantity</label>
+                   <input type="number" class="form-control" formControlName="productquantity" id="MobileNumber3">
+                </div>
+                <div class="modal-footer">
+                 <button type="submit" class="btn btn-primary" >Submit</button>
+             </div>
+        
+                                                 
+                </form>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    
+
+
