@@ -28,7 +28,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductDesComponent } from './Products/product-des/product-des.component';
 import { CompareComponent } from './compare/compare.component';
 import { UserProfileComponent } from './Users/user-profile/user-profile.component';
-import { WishlistComponent } from './Users/wishlist/wishlist.component';
+
 import { CartComponent } from './cart/cart.component';
 import { AllProductsComponent } from './Products/all-products/all-products.component';
 
@@ -62,7 +62,7 @@ import { PendingProductsComponent } from './pending-products/pending-products.co
         ProductDesComponent,
         CompareComponent,
         UserProfileComponent,
-        WishlistComponent,
+       
         CartComponent,
         AllProductsComponent,
         

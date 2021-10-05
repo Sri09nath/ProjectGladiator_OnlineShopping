@@ -17,7 +17,7 @@ import { UserForgotPswdComponent } from './Users/user-forgot-pswd/user-forgot-ps
 import { UserOTPComponent } from './Users/user-otp/user-otp.component';
 import { UserProfileComponent } from './Users/user-profile/user-profile.component';
 import { UserRegisterComponent } from './Users/user-register/user-register.component';
-import { WishlistComponent } from './Users/wishlist/wishlist.component';
+
 import { ProductDesComponent } from './Products/product-des/product-des.component';
 import { CartComponent } from './cart/cart.component';
 import { AllProductsComponent } from './Products/all-products/all-products.component';
@@ -40,7 +40,7 @@ const routes: Routes = [
   {path:'New Password',component:NewPasswordComponent},
   {path:'ProductDetails',component:ProductDetailsComponent},
   {path:'Admin1',component:AdminComponent},
-  {path:'WishList',component:WishlistComponent},
+  
   {path:'UserProfile',component:UserProfileComponent},
   {path:'ProductDescription/:productid', component:ProductDesComponent},
   {path:'Cart', component:CartComponent},
