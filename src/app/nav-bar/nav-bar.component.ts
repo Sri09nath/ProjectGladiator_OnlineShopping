@@ -148,7 +148,7 @@ get retailerpassword()
   return this.RetailerLoginForm.get('retailerpassword');
 }
 
-      submitretailerdata()
+  submitretailerdata()
   {
     {
       console.log(this.RetailerLoginForm.value);
